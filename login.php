@@ -12,6 +12,7 @@
   if(isset($_SESSION['user_id'])) {
     // SESSION[user_id]に値入っていればログインしたとみなす
     echo "<div>$_SESSION[user_name]さんは現在ログインしています</div>";
+    echo $_SESSION['user_id'];
     echo "<div><a href='logout.php'>ログアウトページへ</a></div>";
     exit();
   } else {
