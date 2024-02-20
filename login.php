@@ -25,6 +25,7 @@
         $stmt = $mysqli->prepare("SELECT * FROM trx_users WHERE `user_name`=?");
         $stmt->bind_param('s', $username);
         $stmt->execute();
+        
         $stmt->bind_result($id, $user_name, $db_password);
         while ($stmt->fetch()) {
             if ($db_password == $password_hash) {
