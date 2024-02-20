@@ -6,6 +6,7 @@ if (isset($_POST["logout"])) {
         echo "<p>ログアウトしました</p>";
         echo "<p><a href='login.php'>ログインはこちら</a></p>";
         session_destroy();
+		header('Location: http://192.168.64.6/table.php');
     } else {
         echo "<a href='login.php'>ログインしてください</a>";
     }

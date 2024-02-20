@@ -1,14 +1,24 @@
 <?php
 session_start();
-if (isset($_SESSION['user_id'])) {
-    echo "<h2>コメント投稿</h2>";
-    echo "<form action='comment.php' method='post' >";
-    echo "<div><textarea name='comment_text' rows='5' cols='40' placeholder='コメントを入力してください'></textarea></div>";
-    echo "<div><input type='submit' value='投稿'></div>";
-    echo "</form>";
+if (!isset($_SESSION['user_id'])) {
+    echo "<p><a href='login.php'>ログインしていません</a></p>";
 } else {
-    echo "<p>ログインしていません</p>";
+   // トークン作成
+   $csrf_token = bin2hex(random_bytes(32));
+
+   // 生成したトークンをセッションに保存
+   $_SESSION['csrf_token'] = $csrf_token;
+
+   echo "ようこそ、$_SESSION[user_name]";
+   echo "<h2>コメント投稿</h2>";
+   echo "<form action='comment.php' method='post' >";
+   echo "<input type='hidden' name='csrf_token' value='$_SESSION[csrf_token])'>";
+   echo "<div><textarea name='comment_text' rows='5' cols='40' placeholder='コメントを入力してください'></textarea></div>";
+   echo "<div><input type='submit' value='投稿'></div>";
+   echo "</form>";
 }
+ 
+
 
 $mysqli = new mysqli('localhost', 'takumi', 'brightech', 'test');
 if($mysqli->connect_error){
