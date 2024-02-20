@@ -28,7 +28,7 @@ if($mysqli->connect_error){
     $mysqli->set_charset('utf8');
 }
 
-$sql = "SELECT c.id, u.user_name, c.text FROM trx_comments AS `c` JOIN trx_users AS `u` ON  u.id = c.user_id ORDER BY c.id;";
+$sql = "SELECT u.id, u.user_name, c.text FROM trx_comments AS `c` JOIN trx_users AS `u` ON  u.id = c.user_id ORDER BY c.id;";
 $result = $mysqli->query($sql);
 
 // 切断
