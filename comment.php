@@ -39,4 +39,4 @@ if (isset($_POST["comment_text"]) && !empty($_POST["comment_text"])) {
 $mysqli->close();
 
 //リダイレクト（table.phpにリダイレクトすると自然な流れになると思います）
-header('Location: http://192.168.64.6/table.php');
+header('Location: http://192.168.64.5/table');
